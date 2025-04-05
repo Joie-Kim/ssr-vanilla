@@ -7,6 +7,9 @@ const app = express();
 // 요청 본문을 파싱하기 위한 미들웨어 추가
 app.use(express.json());
 
+// 정적 파일 등록
+app.use('/src', express.static('src'));
+
 app.get('/', (req, res) => {
   res.send(render(model.todoItems));
 });
