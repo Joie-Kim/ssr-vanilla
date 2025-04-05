@@ -10,18 +10,19 @@ app.use(express.json());
 // 정적 파일 등록
 app.use('/src', express.static('src'));
 
+// 서버 메모리에 todoItems 저장
+// 기존 model.js의 todoItems 대신 사용
+let serverTodoItems = ['Test 1', 'Test 2', 'Test 3'];
+
 app.get('/', (req, res) => {
-  res.send(render(['Test 1', 'Test 2', 'Test 3']));
+  res.send(render(serverTodoItems));
 });
 
-app.post('/api/todo', (req, res) => {
-  model.addTodoItem(req.body.item);
-  res.status(201).send();
-});
-
-app.delete('/api/todo/:id', (req, res) => {
-  model.removeTodoItem(req.params.id);
-  res.status(204).send();
+// 전체 리스트를 갱신하는 API
+app.put('/api/todo', (req, res) => {
+  // 서버 메모리 업데이트
+  serverTodoItems = req.body.items;
+  res.status(200).send(serverTodoItems);
 });
 
 app.listen(3000, () => {
