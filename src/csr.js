@@ -1,6 +1,11 @@
 import { TodoForm, TodoList } from './components.js';
 import { model } from './model.js';
 
+// 초기 상태 업데이트
+if (window.__INITIAL_STATE__) {
+  model.setInitialTodoItems(window.__INITIAL_STATE__);
+}
+
 // 이벤트 위임을 사용하여 이벤트 리스너 추가
 const $app = document.querySelector('#app');
 $app.addEventListener('click', (e) => {

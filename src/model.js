@@ -6,4 +6,7 @@ export const model = {
   removeTodoItem: (index) => {
     model.todoItems.splice(index, 1);
   },
+  setInitialTodoItems: (initialState) => {
+    model.todoItems = initialState;
+  },
 };

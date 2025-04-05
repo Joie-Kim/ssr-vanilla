@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/src', express.static('src'));
 
 app.get('/', (req, res) => {
-  res.send(render(model.todoItems));
+  res.send(render(['Test 1', 'Test 2', 'Test 3']));
 });
 
 app.post('/api/todo', (req, res) => {

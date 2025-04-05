@@ -13,6 +13,10 @@ export const render = (items) => {
           ${TodoForm()}
           ${TodoList(items)}
         </div>
+        <script>
+          // 서버에서 전달받은 데이터를 저장
+          window.__INITIAL_STATE__ = ${JSON.stringify(items)};
+        </script>
         <script type="module" src="src/main.js"></script>
       </body>
     </html>
